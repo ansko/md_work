@@ -1,0 +1,31 @@
+# dummpy lammps script to test produced structures
+
+
+units               real
+atom_style          full
+bond_style          harmonic
+angle_style         harmonic
+dihedral_style      harmonic
+improper_style      cvff
+
+
+neighbor            3 bin
+neigh_modify        delay 0 every 1 check no page 50000000 one 5000000
+pair_style          lj/cut/coul/long 10
+kspace_style        pppm 0.0001
+
+
+read_data           mmt.data
+#read_data           pa6_x10.data
+#read_data           new_mod.data
+#read_data           modifier.data
+#replicate           5 5 1
+
+
+thermo_style        custom step density pe evdwl ecoul ebond lx ly lz vol
+thermo              100
+fix                 1 all npt x 0 0 10000 y 0 0 10000 z 0 0 10000 temp 300 300 10000
+dump                d0 all image 10000 dump.*.jpg type type view 90 0
+
+
+run 100000
