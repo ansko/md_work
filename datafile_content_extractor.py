@@ -92,7 +92,7 @@ def datafile_content_extract(dfc, atom_ids_list):
 
 
 if __name__ == '__main__':
-    fname = 'mix.data'
+    fname = 'data_structures/mix.data'
     dfc = DatafileContent(fname)
 
     #atom_ids_list = range(1561, 1561+192)  # leave single modifier molecule
@@ -112,7 +112,7 @@ if __name__ == '__main__':
     dfc.reassign_angle_types()
     dfc.reassign_dihedral_types()
 
-    center_in_box(dfc, border=1)
-    dfc.zlo -= 3
+    #center_in_box(dfc, border=1)
+    #dfc.zlo -= 3
 
     dfc.write('mmt.data')

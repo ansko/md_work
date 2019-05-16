@@ -59,7 +59,7 @@ def center_in_box(dfc, border=0):
 
 
 if __name__ == '__main__':
-    fname = 'modifier.data'
+    fname = 'data_structures/modifier.data'
     dfc = DatafileContent(fname)
 
     dfc.reassign_atom_ids()

@@ -15,17 +15,25 @@ pair_style          lj/cut/coul/long 10
 kspace_style        pppm 0.0001
 
 
-read_data           mmt.data
-#read_data           pa6_x10.data
-#read_data           new_mod.data
-#read_data           modifier.data
-#replicate           5 5 1
+read_data           new_mmt.data
 
 
 thermo_style        custom step density pe evdwl ecoul ebond lx ly lz vol
 thermo              100
-fix                 1 all npt x 0 0 10000 y 0 0 10000 z 0 0 10000 temp 300 300 10000
-dump                d0 all image 10000 dump.*.jpg type type view 90 0
+fix                 1 all npt x 0 0 10000 y 0 0 10000 z 1000 1000 10000 temp 500 500 10000
+dump                d0 all image 1 dump.*.jpg type type view 90 0
 
 
-run 100000
+timestep            0.001
+run                 1000
+
+timestep            0.01
+run                 1000
+
+timestep            0.1
+run                 1000
+
+timestep            1
+run                 1000
+
+unfix 1

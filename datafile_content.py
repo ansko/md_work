@@ -3,7 +3,7 @@ class DatafileContent:
     Container class for data file information
     (both for forcefield and structure).
     '''
-    def __init__(self, fname):
+    def __init__(self, fname=None):
         self.fname = fname
         self.comment = None
         self.atoms = None
@@ -32,7 +32,8 @@ class DatafileContent:
         self.angle_coeffs = None
         self.dihedral_coeffs = None
         self.improper_coeffs = None
-        self.read()
+        if fname is not None:
+            self.read()
 
     def read(self):
         '''
@@ -623,18 +624,28 @@ class DatafileContent:
         f = open(fname, 'w')
         tmppr = lambda *x : print(*x, file=f)
         tmppr(self.comment)
-        tmppr('')
-        tmppr(self.atoms_count, 'atoms')
-        tmppr(self.atom_types, 'atom types')
-        tmppr(self.bonds_count, 'bonds')
-        tmppr(self.bond_types, 'bond types')
-        tmppr(self.angles_count, 'angles')
-        tmppr(self.angle_types, 'angle types')
-        tmppr(self.dihedrals_count, 'dihedrals')
-        tmppr(self.dihedral_types, 'dihedral types')
-        if self.impropers is not None:
+        if not self.comment.endswith('\n'):
+            tmppr('')
+        if self.atoms_count is not None and self.atoms_count > 0:
+            tmppr(self.atoms_count, 'atoms')
+            tmppr(self.atom_types, 'atom types')
+            assert(self.atom_types > 0)  # not None
+        if self.bonds_count is not None and self.bonds_count > 0:
+            tmppr(self.bonds_count, 'bonds')
+            tmppr(self.bond_types, 'bond types')
+            assert(self.bond_types > 0)
+        if self.angles_count is not None and self.angles_count > 0:
+            tmppr(self.angles_count, 'angles')
+            tmppr(self.angle_types, 'angle types')
+            assert(self.angle_types > 0)
+        if self.dihedrals_count is not None and self.dihedrals_count > 0:
+            tmppr(self.dihedrals_count, 'dihedrals')
+            tmppr(self.dihedral_types, 'dihedral types')
+            assert(self.dihedral_types > 0)
+        if self.impropers_count is not None and self.impropers_count > 0:
             tmppr(self.impropers_count, 'impropers')
             tmppr(self.improper_types, 'improper types')
+            assert(self.improper_types > 0)
         tmppr('')
         tmppr(self.xlo, self.xhi, 'xlo xhi')
         tmppr(self.ylo, self.yhi, 'ylo yhi')
@@ -757,7 +768,7 @@ class DatafileContent:
 
 
 if __name__ == '__main__':
-    fname = 'modifier.data'
+    fname = 'data_structures/modifier.data'
     dfc = DatafileContent(fname)
 
     dfc.reassign_atom_ids()
@@ -765,6 +776,5 @@ if __name__ == '__main__':
     dfc.reassign_bond_types()
     dfc.reassign_angle_types()
     dfc.reassign_dihedral_types()
-    dfc.translate_in_box(dy=10)
 
     dfc.write('new_mod.data')
