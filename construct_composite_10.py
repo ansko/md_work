@@ -14,11 +14,14 @@ if __name__ == '__main__':
     '''
 
     # mmt and mod extruded from mix.data
-    fname_mmt_mod = 'data_structures/mmt_and_mod.data'
+    #fname_mmt_mod = 'data_structures/mmt_and_mod.data'
+
+    fname_mmt_mod = 'data_structures/mmt_mod_331.data'
     # some relaxed poly molecule (not from mix.data!)
     fname_poly = 'data_structures/pa6_x10.data'
 
-    dezired_nz = 50
+    dezired_n = 750
+    dezired_nz = dezired_n / 3 / 5
 
     dfc_mmt_mod = DatafileContent(fname_mmt_mod)
     dfc_poly = DatafileContent(fname_poly)
@@ -51,4 +54,4 @@ if __name__ == '__main__':
     dfc_merged.zhi += 40
 
     # save data
-    dfc_merged.write('new_mmt.data')
+    dfc_merged.write('comp_mon10_n750.data')

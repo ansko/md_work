@@ -56,4 +56,4 @@ if __name__ == '__main__':
     # n_poly = (156600 - 1560*9) / 1902 ~~ 75
 
     # save data
-    dfc_merged.write('new_mmt.data')
+    dfc_merged.write('comp_mon100_n75.data')

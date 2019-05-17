@@ -1,26 +1,29 @@
 # Structure manipulation
 
+
+https://github.com/ansko/md_work
+
 An attempt to write some tools to create molecular structures automatically.
 Structures are made of MMT, modifier and polyamide-6.
 
+It seems that 75 chains each 100-monomers long in mmt replicated 3 times in both
+x and y directions is a good configuration. It means that there are 7500 monomers
+in the cell. Summary of systems:
+Length      --- Chains number --- Atoms Count
+in monomers --- per mmt_331   ---
+ 10         --- 750           --- 1560*9 + 192*750       = 158040 +
+ 25         --- 300           --- 1560*9 + (19*25+2)*300 = 157140 +
+ 50         --- 150           --- 1560*9 + (19*50+2)*150 = 156840 +
+100         ---  75           --- 1560*9 + (19*100+2)*75 = 156690 +
 
-## construct_composite_10
 
-Constructs compisite that is very similar to old segregated system:
-    720 mmt atoms (periodic platelet with 12 substitutions Al -> Mg)
-    840 modifier atoms (12 molecules x 70 atoms)
-    1920 polymer atoms (10 molecules x 192 atoms)
+## construct_composite_*
 
+Construct compisites that are similar to each other:
+    1560*9 = mmt and mod
+    N * M-monomer-long chains (N*M = 7500 = 75*100 = 50*150 = 25*300 = 10*750)
+Results are in data_structures/comp_mon*_n*.data
 
-## construct_composite_100
-
-A structure with long polymer chains, designed to check wether the relaxation 
-process depeds on the polymer lenght. Also, as soon as the crystallization 
-behavior shall be studied, it is important to check the crystallization of 
-longer chains.
-    720*9 mmt atoms
-    840*9 modifiler atoms
-    1902*75 polymer atoms
 
 
 ## Source code:
