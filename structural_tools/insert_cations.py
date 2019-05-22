@@ -2,7 +2,7 @@ import random
 import time
 
 
-from datafile_content import DatafileContent
+from .datafile_content import DatafileContent
 
 
 def insert_cations(dfc_mmt, N, **ff):

@@ -1,5 +1,5 @@
-from datafile_content import DatafileContent
-from datafile_content_modifiers import center_in_box, get_bbox
+from .datafile_content import DatafileContent
+from .datafile_content_modifiers import center_in_box, get_bbox
 
 
 def datafile_content_extract(dfc, atom_ids_list):

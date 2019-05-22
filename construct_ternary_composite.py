@@ -1,10 +1,10 @@
 import random
 import sys
 
-from datafile_content import DatafileContent
-from datafile_content_modifiers import get_bbox
-from insert_poly_into_mmt import insert_poly_into_mmt
-from utils import move_some_atoms
+from structural_tools.datafile_content import DatafileContent
+from structural_tools.datafile_content_modifiers import get_bbox
+from structural_tools.insert_poly_into_mmt import insert_poly_into_mmt
+from structural_tools.utils import move_some_atoms
 
 
 if __name__ == '__main__':

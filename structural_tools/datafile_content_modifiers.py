@@ -1,4 +1,4 @@
-from datafile_content import DatafileContent
+from .datafile_content import DatafileContent
 
 
 def translate_in_box(dfc, dx=None, dy=None, dz=None):

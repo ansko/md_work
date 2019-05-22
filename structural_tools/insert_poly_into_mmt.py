@@ -1,7 +1,7 @@
 import copy
 
-from datafile_content import DatafileContent
-from datafile_content_modifiers import get_bbox
+from .datafile_content import DatafileContent
+from .datafile_content_modifiers import get_bbox
 
 
 mmt_thickness = 8
