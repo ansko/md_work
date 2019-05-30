@@ -116,7 +116,7 @@ class DatafileContent:
                 dihedrals_idx = idx
             elif line.startswith('Impropers'):
                 impropers_idx = idx
-        if masses_idx is not None:
+        if masses_idx is not None and self.atom_types is not None:
             masses_lines = lines[masses_idx + 2:masses_idx + 2 + self.atom_types]
             self.masses = []
             for line in masses_lines:
@@ -128,7 +128,7 @@ class DatafileContent:
                 except IndexError:
                     new_data_element['comment'] = None
                 self.masses.append(new_data_element)
-        if pair_coeffs_idx is not None:
+        if pair_coeffs_idx is not None and self.atom_types is not None:
             pair_coeffs_lines = lines[pair_coeffs_idx + 2:
                 pair_coeffs_idx + 2 + self.atom_types]
             self.pair_coeffs = []
@@ -142,7 +142,7 @@ class DatafileContent:
                 except IndexError:
                     new_data_element['comment'] = None
                 self.pair_coeffs.append(new_data_element)
-        if bond_coeffs_idx is not None:
+        if bond_coeffs_idx is not None and self.bond_types is not None:
             bond_coeffs_lines = lines[bond_coeffs_idx + 2:
                 bond_coeffs_idx + 2 + self.bond_types]
             self.bond_coeffs = []
@@ -156,7 +156,7 @@ class DatafileContent:
                 except IndexError:
                     new_data_element['comment'] = None
                 self.bond_coeffs.append(new_data_element)
-        if angle_coeffs_idx is not None:
+        if angle_coeffs_idx is not None and self.angle_types is not None:
             angle_coeffs_lines = lines[angle_coeffs_idx + 2:
                 angle_coeffs_idx + 2 + self.angle_types]
             self.angle_coeffs = []
@@ -170,7 +170,7 @@ class DatafileContent:
                 except IndexError:
                     new_data_element['comment'] = None
                 self.angle_coeffs.append(new_data_element)
-        if dihedral_coeffs_idx is not None:
+        if dihedral_coeffs_idx is not None and self.dihedral_types is not None:
             dihedral_coeffs_lines = lines[dihedral_coeffs_idx + 2:
                 dihedral_coeffs_idx + 2 + self.dihedral_types]
             self.dihedral_coeffs = []
@@ -185,7 +185,7 @@ class DatafileContent:
                 except IndexError:
                     new_data_element['comment'] = None
                 self.dihedral_coeffs.append(new_data_element)
-        if improper_coeffs_idx is not None:
+        if improper_coeffs_idx is not None and self.improper_types is not None:
             improper_coeffs_lines = lines[improper_coeffs_idx + 2:
                 improper_coeffs_idx + 2 + self.improper_types]
             self.improper_coeffs = []
